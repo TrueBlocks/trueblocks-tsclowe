@@ -1,0 +1,20 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "TSC Lowe",
+  "outputfilename": "tsclowe",
+  "frontend:install": "yarn install",
+  "frontend:build": "yarn build",
+  "frontend:dev:watcher": "yarn dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "Thomas Jay Rush",
+    "email": "jrush@quickblocks.io"
+  },
+  "info": {
+    "companyName": "TrueBlocks, LLC",
+    "productName": "TSC Lowe Data Archive",
+    "productVersion": "1.0.0",
+    "copyright": "Copyright © 2026 TrueBlocks, LLC",
+    "comments": "A desktop app for the Thaddeus S. C. Lowe Data Archive"
+  }
+}
