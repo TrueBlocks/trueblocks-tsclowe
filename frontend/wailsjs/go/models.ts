@@ -14,24 +14,6 @@ export namespace app {
 	        this.description = source["description"];
 	    }
 	}
-	export class Book {
-	    year: string;
-	    title: string;
-	    author: string;
-	    publisher: string;
-	
-	    static createFrom(source: any = {}) {
-	        return new Book(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.year = source["year"];
-	        this.title = source["title"];
-	        this.author = source["author"];
-	        this.publisher = source["publisher"];
-	    }
-	}
 	export class HomeInfo {
 	    title: string;
 	    subtitle: string;
@@ -46,70 +28,6 @@ export namespace app {
 	        this.title = source["title"];
 	        this.subtitle = source["subtitle"];
 	        this.body = source["body"];
-	    }
-	}
-	export class Invention {
-	    date: string;
-	    patent: string;
-	    title: string;
-	    city: string;
-	    state: string;
-	
-	    static createFrom(source: any = {}) {
-	        return new Invention(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.date = source["date"];
-	        this.patent = source["patent"];
-	        this.title = source["title"];
-	        this.city = source["city"];
-	        this.state = source["state"];
-	    }
-	}
-	export class Link {
-	    title: string;
-	    url: string;
-	
-	    static createFrom(source: any = {}) {
-	        return new Link(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.title = source["title"];
-	        this.url = source["url"];
-	    }
-	}
-	export class RealEstate {
-	    property: string;
-	    location: string;
-	    description: string;
-	
-	    static createFrom(source: any = {}) {
-	        return new RealEstate(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.property = source["property"];
-	        this.location = source["location"];
-	        this.description = source["description"];
-	    }
-	}
-	export class TimelineEvent {
-	    date: string;
-	    event: string;
-	
-	    static createFrom(source: any = {}) {
-	        return new TimelineEvent(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.date = source["date"];
-	        this.event = source["event"];
 	    }
 	}
 
@@ -222,6 +140,127 @@ export namespace appkit {
 		    }
 		    return a;
 		}
+	}
+
+}
+
+export namespace db {
+	
+	export class Book {
+	    id: number;
+	    year: string;
+	    title: string;
+	    author: string;
+	    publisher: string;
+	    description: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new Book(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.id = source["id"];
+	        this.year = source["year"];
+	        this.title = source["title"];
+	        this.author = source["author"];
+	        this.publisher = source["publisher"];
+	        this.description = source["description"];
+	    }
+	}
+	export class Invention {
+	    id: number;
+	    date: string;
+	    patent: string;
+	    title: string;
+	    city: string;
+	    state: string;
+	    description: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new Invention(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.id = source["id"];
+	        this.date = source["date"];
+	        this.patent = source["patent"];
+	        this.title = source["title"];
+	        this.city = source["city"];
+	        this.state = source["state"];
+	        this.description = source["description"];
+	    }
+	}
+	export class InventionFilterOptions {
+	    states: string[];
+	    cities: string[];
+	
+	    static createFrom(source: any = {}) {
+	        return new InventionFilterOptions(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.states = source["states"];
+	        this.cities = source["cities"];
+	    }
+	}
+	export class Link {
+	    id: number;
+	    title: string;
+	    url: string;
+	    description: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new Link(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.id = source["id"];
+	        this.title = source["title"];
+	        this.url = source["url"];
+	        this.description = source["description"];
+	    }
+	}
+	export class RealEstate {
+	    id: number;
+	    property: string;
+	    location: string;
+	    description: string;
+	    yearsActive: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new RealEstate(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.id = source["id"];
+	        this.property = source["property"];
+	        this.location = source["location"];
+	        this.description = source["description"];
+	        this.yearsActive = source["yearsActive"];
+	    }
+	}
+	export class TimelineEvent {
+	    id: number;
+	    date: string;
+	    event: string;
+	    category: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new TimelineEvent(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.id = source["id"];
+	        this.date = source["date"];
+	        this.event = source["event"];
+	        this.category = source["category"];
+	    }
 	}
 
 }

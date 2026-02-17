@@ -12,9 +12,11 @@ type WindowState = appkit.WindowState
 type AppState struct {
 	SidebarWidth int                          `json:"sidebarWidth,omitempty"`
 	LastTab      string                       `json:"lastTab,omitempty"`
+	LastRoute    string                       `json:"lastRoute,omitempty"`
 	Window       appkit.WindowState           `json:"window,omitempty"`
 	Tables       map[string]appkit.TableState `json:"tables,omitempty"`
 	Tabs         map[string]string            `json:"tabs,omitempty"`
+	TabRoutes    map[string]string            `json:"tabRoutes,omitempty"`
 }
 
 type Manager struct {
@@ -66,5 +68,25 @@ func (m *Manager) GetTab(pageName string) string {
 func (m *Manager) SetTab(pageName string, tab string) {
 	_ = m.store.Update(func(s *AppState) {
 		s.Tabs = appkit.SetInMap(s.Tabs, pageName, tab)
+	})
+}
+
+func (m *Manager) GetTabRoute(key string) string {
+	return appkit.GetFromMap(m.store.Get().TabRoutes, key)
+}
+
+func (m *Manager) SetTabRoute(key, route string) {
+	_ = m.store.Update(func(s *AppState) {
+		s.TabRoutes = appkit.SetInMap(s.TabRoutes, key, route)
+	})
+}
+
+func (m *Manager) GetLastRoute() string {
+	return m.store.Get().LastRoute
+}
+
+func (m *Manager) SetLastRoute(route string) {
+	_ = m.store.Update(func(s *AppState) {
+		s.LastRoute = route
 	})
 }
